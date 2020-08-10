@@ -1,4 +1,12 @@
-const log = [];
+const fs = require("fs");
+const dbjson = require("../../../db.json");
+const log = dbjson.map(({ dateOfBirth, ...rest }) => ({
+  dateOfBirth: new Date(dateOfBirth),
+  ...rest,
+}));
+console.log(log);
+
+// fs.readFileSync(__dirname+"/..")
 
 const _calculateAge = (birthday) => {
   // birthday is a date
@@ -39,5 +47,8 @@ module.exports = {
   get countryDistribution() {
     const dist = distributionBy("country");
     return dist;
+  },
+  get list() {
+    return log;
   },
 };

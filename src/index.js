@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -7,6 +9,7 @@ const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
 const surpriseRoutes = require("./module/surprise/surprise.routes");
+const statistics = require("./module/surprise/services/statistics");
 
 const PORT = process.env.PORT || 3000;
 let server;
@@ -34,8 +37,16 @@ let server;
       console.info(`Node version: ${process.version}`);
     });
 
+    // setInterval(() => {
+    //   const stringJSON = JSON.stringify(statistics.list);
+    //   fs.writeFileSync(__dirname + "/db.json", stringJSON, "utf8");
+    //   console.log(statistics.list);
+    // }, 1000);
+
     process.on("SIGTERM", async function () {
       console.log("SIGTERM signal received. shutting down gracefully");
+      const stringJSON = JSON.stringify(statistics.list);
+      fs.writeFileSync(__dirname + "/db.json", stringJSON, "utf8");
       server.close(() => {
         console.log("Closed out remaining http connections");
         console.log("closed db connection");
