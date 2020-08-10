@@ -47,6 +47,7 @@ let server;
       console.log("SIGTERM signal received. shutting down gracefully");
       const stringJSON = JSON.stringify(statistics.list);
       fs.writeFileSync(__dirname + "/db.json", stringJSON, "utf8");
+      console.log("saved data", stringJSON);
       server.close(() => {
         console.log("Closed out remaining http connections");
         console.log("closed db connection");
