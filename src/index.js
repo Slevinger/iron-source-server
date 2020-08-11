@@ -37,12 +37,6 @@ let server;
       console.info(`Node version: ${process.version}`);
     });
 
-    setInterval(() => {
-      const stringJSON = JSON.stringify(statistics.list);
-      fs.writeFileSync(__dirname + "/db.json", stringJSON, "utf8");
-      console.log(statistics.list);
-    }, 10000);
-
     process.on("SIGTERM", async function () {
       console.log("SIGTERM signal received. shutting down gracefully");
       const stringJSON = JSON.stringify(statistics.list);
