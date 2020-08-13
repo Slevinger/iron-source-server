@@ -4,7 +4,6 @@ const log = dbjson.map(({ dateOfBirth, ...rest }) => ({
   dateOfBirth: new Date(dateOfBirth),
   ...rest,
 }));
-console.log(log);
 
 // fs.readFileSync(__dirname+"/..")
 

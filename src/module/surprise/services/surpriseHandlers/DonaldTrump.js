@@ -7,7 +7,6 @@ const GetDonaldTrumpQuote = {
     return dateOfBirth.getFullYear() > 2000 && !name.match(/^[az]/i);
   },
   getSurpriseFromInput: async (input) => {
-    console.log(input);
     const index = input.dateOfBirth.getDate();
     const { message } = await rp(
       "https://api.whatdoestrumpthink.com/api/v1/quotes/random",
@@ -15,7 +14,6 @@ const GetDonaldTrumpQuote = {
         json: true,
       }
     );
-    console.log(index);
     const { url } = await rp(
       "http://www.splashbase.co/api/v1/images/" + index,
       {
