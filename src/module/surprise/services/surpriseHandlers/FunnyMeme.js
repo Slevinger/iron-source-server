@@ -7,7 +7,7 @@ const GetFunnyMeme = {
     const { name } = input;
     return !name.match(/^q/i);
   },
-  handle: (input) => {
+  getSurpriseFromInput: (input) => {
     const index = (input.name || "").split(" ").join("").length;
     const { url } = listOfMemes[index];
     return { url };

@@ -6,7 +6,7 @@ const GetChuckNorrisJoke = {
     const { dateOfBirth } = input;
     return dateOfBirth.getFullYear() <= 2000;
   },
-  handle: async (input) => {
+  getSurpriseFromInput: async (input) => {
     const { icon_url, value } = await rp(
       "https://api.chucknorris.io/jokes/random",
       {

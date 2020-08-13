@@ -6,7 +6,7 @@ const GetDonaldTrumpQuote = {
     const { dateOfBirth, name } = input;
     return dateOfBirth.getFullYear() > 2000 && !name.match(/^[az]/i);
   },
-  handle: async (input) => {
+  getSurpriseFromInput: async (input) => {
     console.log(input);
     const index = input.dateOfBirth.getDate();
     const { message } = await rp(
